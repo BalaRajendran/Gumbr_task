@@ -174,7 +174,7 @@ if(empty($row)){
                 <div class="g-text-center--xs g-margin-b-80--xs">
                   <!-- start -->
 <center><span id="error1"><?php if(isset($_GET['msg1'])){ echo $_GET['msg1']; } ?></span></center><br>
-<form id="myFrm2" action="add.php" method="POST" autocomplete="off">
+<form id="myFrm2" action="feedback.php" method="POST" autocomplete="off">
 <input type="text" class="form-control"  name="name" id="name" placeholder="* Name please *"><br>
 <input type="hidden" name="city" value="<?php echo $_GET["city"]; ?>">
 <input type="hidden" name="hotelname" value="<?php echo $_GET["hname"]; ?>">
@@ -214,8 +214,8 @@ if(empty($row)){
                         <div class="col-sm-6 g-margin-b-20--xs g-margin-b-0--md">
                             <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".2s">
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                                <form id="myForm" action="feedback.php" method="POST" autocomplete="off">
-                                <center><span id="error"></span></center><br>
+                                <form id="myForm" action="add.php" method="POST" autocomplete="off">
+                                <center><span id="error1"><?php if(isset($_GET['msgp'])){ echo $_GET['msgp']; } ?></span></center><br>
                                 <li> <input type="text" class="form-control"  id="name" name="name" placeholder="Enter Your Name"></li><br>
                                <li> <input type="text" class="form-control"  id="email" name="email" placeholder="Enter Your Email"></li><br>
                                 <li><input type="text" class="form-control" id="pno" name="pno"  placeholder="Enter Your Mobile Number"></li><br>
@@ -254,25 +254,26 @@ if(empty($row)){
         <!-- jquery library -->
          <script type="text/javascript" src="js/jquery.min.js"></script>
             <script>
-          $("#feed").click( function() {
-     $.post( $("#myForm").attr("action"), 
-     $("#myForm :input").serializeArray(), 
-         function(info){
-          $("#error").html(info);
-           $('#error').delay(3000).show().fadeOut('slow');
-            $(".er").css("background", "#d6c1c1");
-   });
- clearInput();
-});
+//           $("#feed").click( function() {
+//      $.post( $("#myForm").attr("action"), 
+//      $("#myForm :input").serializeArray(), 
+//          function(info){
+//           alert(info);
+//           $("#error").html(info);
+//            $('#error').delay(3000).show().fadeOut('slow');
+//             $(".er").css("background", "#d6c1c1");
+//    });
+//  clearInput();
+// });
  
-$("#myForm").submit( function() {
-  return false; 
-});
-function clearInput() {
-    $("#myForm :input").each( function() {
-       $(this).val('');
-    });
-}
+// $("#myForm").submit( function() {
+//   return false; 
+// });
+// function clearInput() {
+//     $("#myForm :input").each( function() {
+//        $(this).val('');
+//     });
+// }
 // $( ".er" ).click(function() {
 //    $(".er").css("background", "white");
 // });

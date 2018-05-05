@@ -277,8 +277,8 @@
                         <div class="col-sm-6 g-margin-b-20--xs g-margin-b-0--md">
                             <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".2s">
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                                <form id="myForm" action="feedback.php" method="POST" autocomplete="off">
-                                <center><span id="error"></span></center><br>
+                            <form  action="add.php" method="POST" autocomplete="off">
+                                <center><span id="error1"><?php if(isset($_GET['msgp'])){ echo $_GET['msgp']; } ?></span></center><br>
                                 <li> <input type="text" class="form-control"  id="name" name="name" placeholder="Enter Your Name"></li><br>
                                <li> <input type="text" class="form-control"  id="email" name="email" placeholder="Enter Your Email"></li><br>
                                 <li><input type="text" class="form-control" id="pno" name="pno"  placeholder="Enter Your Mobile Number"></li><br>
@@ -306,26 +306,6 @@
             </div>
             <!-- End Copyright -->
         </footer>
-        <div class="container">
- <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
 
         <!--loader-->
          <script  type="text/javascript" src="js/loader1.js"></script>
@@ -337,30 +317,27 @@
         <script type="text/javascript" src="js/wow.min.js"></script>
         <!-- jquery library -->
          <script type="text/javascript" src="js/jquery.min.js"></script>
-            <script>
-          $("#feed").click( function() {
-     $.post( $("#myForm").attr("action"), 
-     $("#myForm :input").serializeArray(), 
-         function(info){
-          $("#error").html(info); 
-           $('#error').delay(3000).show().fadeOut('slow');
-            $(".er").css("background", "#d6c1c1");
-   });
- clearInput();
-});
+<script>
+//           $("#feed").click( function() {
+//      $.post( $("#myForm").attr("action"), 
+//      $("#myForm :input").serializeArray(), 
+//          function(info){
+//           $("#error").html(info); 
+//           alert(info);
+//            $('#error').delay(3000).show().fadeOut('slow');
+//    });
+//  clearInput();
+// });
  
-$("#myForm").submit( function() {
-  return false; 
-});
+// $("#myForm").submit( function() {
+//   return false; 
+// });
  
-function clearInput() {
-    $("#myForm :input").each( function() {
-       $(this).val('');
-    });
-}
-$( ".er" ).click(function() {
-   $(".er").css("background", "white");
-});
+// function clearInput() {
+//     $("#myForm :input").each( function() {
+//        $(this).val('');
+//     });
+// }
 $(document).ready(function(){
 $("form").attr('autocomplete', 'off');
 });

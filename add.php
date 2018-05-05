@@ -45,14 +45,11 @@ if(isset($_POST["state_id"])){
         echo '<option value="">City not available</option>';
     }
 }
-
 $servername = "208.91.198.197:3306";
 $username = "BalajiNandha";
 $password = "@Itengineer007";
 $dbname = "farmingarms";
-
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
+$conn = new mysqli($servername, $username, $password, $dbname);
   // Check connection
   if ($conn->connect_error) 
   {
@@ -61,16 +58,16 @@ $dbname = "farmingarms";
   if(isset($_POST["feed"])){
 if($_POST['name'] =="" or $_POST['email']=="" or $_POST['pno'] =="" or $_POST['msg']=="" )
 {
-    echo "All Field Required";
+    header("Location:http://farmingarms.com/task/index.php?msgp=All Field Required");
 }
 else{
    if(!preg_match('/^[7-9]{1}[0-9]{9}$/', $_POST['pno']))
     {
-       echo "Invalid Phone Number";
+     header("Location:http://farmingarms.com/task/index.php?msgp=Invalid Mobile Number!");
     }
         elseif(!preg_match('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/', $_POST['email']))
     {
-       echo "Invalid Email ID";
+       header("Location:http://farmingarms.com/task/index.php?msgp=Invalid Email ID!");
     }
     
 elseif ($data=$conn->prepare("INSERT INTO feedback1 (name,email,pno,msg,time) VALUES(?,?,?,?,?)"))
@@ -80,11 +77,11 @@ elseif ($data=$conn->prepare("INSERT INTO feedback1 (name,email,pno,msg,time) VA
         $time = date('d/m/Y h:i:s', time());
              $data->bind_param("sssss", $_POST['name'], $_POST['email'], $_POST['pno'], $_POST['msg'],$time);
              $data->execute();
-			 $data->close();
-			 echo "Feedback Submitted Sucessfully!";
+			 $data->close();			 
+       header("Location:http://farmingarms.com/task/index.php?msg=Feedback Submitted Sucessfully!");
 	 }
 		else{
-		  echo "Operation Failed";
+		  header("Location:http://farmingarms.com/task/index.php?msg=Operation !");
 		}
     }
 }
@@ -92,7 +89,7 @@ if(isset($_POST["add"])){
 $res=0;
 if($_POST['hotelname'] =="" or $_POST['address']=="" or $_POST['pno'] =="" or $_POST['star']=="" or $_POST['average_cost'] =="" or $_POST['city']=="" or $_POST['time']=="" )
 {
-    header("Location:http://localhost/task/add_res.php?msg=All Field Required");
+    header("Location:http://farmingarms.com/task/add_res.php?msg=All Field Required");
 }
 
 else{
@@ -104,16 +101,16 @@ $res=1;
 }
 if($res==1){
 if((!preg_match('/^[7-9]{1}[0-9]{9}$/', $_POST['pno']))) {
-    header("Location:http://localhost/task/add_res.php?msg=Invalid Phone Number");
+    header("Location:http://farmingarms.com/task/add_res.php?msg=Invalid Phone Number");
 }
 elseif (file_exists($target_file)) {
-    header("Location:http://localhost/task/add_res.php?msg=Sorry, file already exists");
+    header("Location:http://farmingarms.com/task/add_res.php?msg=Sorry, file already exists");
 }
 elseif ($_FILES["fileToUpload"]["size"] > 500000) {
- header("Location:http://localhost/task/add_res.php?msg=Sorry, your file is too large");
+ header("Location:http://farmingarms.com/task/add_res.php?msg=Sorry, your file is too large");
 }
 elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-    header("Location:http://localhost/task/add_res.php?msg=Sorry, only JPG, JPEG, PNG & GIF files are allowed");
+    header("Location:http://farmingarms.com/task/add_res.php?msg=Sorry, only JPG, JPEG, PNG & GIF files are allowed");
 }
 else{
 	$file_name = $_FILES['fileToUpload']['name'];
@@ -122,7 +119,7 @@ $connection->bind_param("ssssssss",$_POST['hotelname'], $_POST['address'], $_POS
 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
  $connection->execute();
    $connection->close();
-   header("Location:http://localhost/task/add_res.php?msg=Restaurant has been Added Sucessfully");
+   header("Location:http://farmingarms.com/task/add_res.php?msg=Restaurant has been Added Sucessfully");
    	}
    }  
 }
@@ -141,10 +138,10 @@ $connection->bind_param("ssssss",$name, $time, $dat, $hotelname, $city, $review)
 $connection->execute();
 $connection->close(); 
 //echo "Thank for your review";
-header("Location:http://localhost/task/review.php?city=".$city."&hname=".$hotelname."&msg1=Thank for your review");
+header("Location:http://farmingarms.com/task/review.php?city=".$city."&hname=".$hotelname."&msg1=Thank for your review");
 }
 else{
-header("Location:http://localhost/task/review.php?city=".$city."&hname=".$hotelname."&msg1=All Field Required");
+header("Location:http://farmingarms.com/task/review.php?city=".$city."&hname=".$hotelname."&msg1=All Field Required");
 //echo "All Field Required";
 
 }

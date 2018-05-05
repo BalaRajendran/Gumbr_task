@@ -160,8 +160,8 @@
                         <div class="col-sm-6 g-margin-b-20--xs g-margin-b-0--md">
                             <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".2s">
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                                <form id="myForm" action="feedback.php" method="POST" autocomplete="off">
-                                <center><span id="error"></span></center><br>
+                                <form  action="add.php" method="POST" autocomplete="off">
+                                <center><span id="error1"><?php if(isset($_GET['msgp'])){ echo $_GET['msgp']; } ?></span></center><br>
                                 <li> <input type="text" class="form-control"  id="name" name="name" placeholder="Enter Your Name"></li><br>
                                <li> <input type="text" class="form-control"  id="email" name="email" placeholder="Enter Your Email"></li><br>
                                 <li><input type="text" class="form-control" id="pno" name="pno"  placeholder="Enter Your Mobile Number"></li><br>
@@ -200,21 +200,21 @@
         <!-- jquery library -->
          <script type="text/javascript" src="js/jquery.min.js"></script>
             <script>
-          $("#feed").click( function() {
-     $.post( $("#myForm").attr("action"), 
-     $("#myForm :input").serializeArray(), 
-         function(info){
-          $("#error").html(info); 
-           $('#error').delay(3000).show().fadeOut('slow');
-   });
- clearInput();
-});
-$("#myForm").submit( function() {
-  return false; 
-});
- $("#myForm1").submit( function() {
-  return false; 
-});
+//           $("#feed").click( function() {
+//      $.post( $("#myForm").attr("action"), 
+//      $("#myForm :input").serializeArray(), 
+//          function(info){
+//           $("#error").html(info); 
+//            $('#error').delay(3000).show().fadeOut('slow');
+//    });
+//  clearInput();
+// });
+// $("#myForm").submit( function() {
+//   return false; 
+// });
+//  $("#myForm1").submit( function() {
+//   return false; 
+// });
 function clearInput() {
     $("#myForm :input").each( function() {
        $(this).val('');

@@ -39,7 +39,7 @@ $stmt->bind_param('ss', $city, $hname);
             </div>
         </div>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d44651;font-size: 20px !important;">
-  <a class="navbar-brand" href="#" style="font-size: 30px !important;">Tacto</a>
+  <a class="navbar-brand" href="index.php" style="font-size: 30px !important;">Tacto</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -143,8 +143,8 @@ if(!empty($row1)) {
       <hr>
       <?php echo "</div>"; } } }?>
 
-      <?php if(!empty($row1)) { 
-      echo "<div class='block'>";
+      <?php if(empty($row1)) { 
+      echo "<div class='show'>";
       ?>
       <div class="g-bg-color--sky-light">
 <div class="container g-padding-y-80--xs g-padding-y-75--sm">
@@ -167,6 +167,7 @@ $stmt->bind_param('ss', $city, $hname);
     $row = $result->fetch_assoc();
 if(empty($row)){
    echo "<div style='display:none;'>";
+
 ?>
 <div class="g-bg-color--sky-light">
             <div class="container g-padding-y-80--xs g-padding-y-75--sm">

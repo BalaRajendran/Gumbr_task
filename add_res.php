@@ -28,23 +28,26 @@
                 Loading...
             </div>
         </div>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d44651;font-size: 20px !important;">
-  <a class="navbar-brand" href="#" style="font-size: 30px !important;">Tacto</a>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d44651;font-size: 20px !important;">
+  <a class="navbar-brand" href="index.php" style="font-size: 30px !important;">Tacto</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>    
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>    
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="add_res.php">Add Restaurant</a>    
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#myModal" href="login/register.php">Sign-Up</a>
+        <a class="nav-link" href="login/register.php">Sign-Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#myModal" href="login/index.php">Log-In </a>
+        <a class="nav-link" href="login/index.php">Log-In </a>
       </li>
     </ul>
   </div>

@@ -3,11 +3,18 @@ $conn = new mysqli("208.91.198.197:3306", "BalajiNandha", "@Itengineer007", "far
 if(isset($_GET['city']) && isset($_GET['hname'])){
      $city = $_GET['city'];
      $hname = $_GET['hname'];
-$stmt = $conn->prepare("SELECT * FROM hotels WHERE city = ? AND hotelname = ?");
-$stmt->bind_param('ss', $city, $hname);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+//$stmt = $conn->prepare("SELECT * FROM hotels WHERE city = ? AND hotelname = ?");
+//$stmt->bind_param('ss', $city, $hname);
+  //  $stmt->execute();
+    //$result = $stmt->get_result();
+    //$row = $result->fetch_assoc();
+     $query = "SELECT * FROM hotels WHERE city = '$city' AND hotelname = '$hname'";
+if ($result = $conn->query($query)) {
+  $row = $result->fetch_assoc();
+}
+else{
+  $row=NULL;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -115,14 +122,11 @@ $stmt->bind_param('ss', $city, $hname);
               <h2 class="g-font-size-32--xs g-font-size-36--md g-text-center--xs g-margin-b-80--xs ">Collected Reviews </h2>
           <div class="container">
     <?php  
-    $city = $_GET['city'];
-     $hname = $_GET['hname'];
         $stmt1 = $conn->prepare("SELECT * FROM review2  WHERE city = ? AND hotelname = ?");
 $stmt1->bind_param('ss', $city, $hname);
     $stmt1->execute();
     $result1 = $stmt1->get_result();
     $row1 = $result1->fetch_assoc();
-
 if(!empty($row1)) { 
       echo "<div class='show'>";
     foreach($result1 as $row2) {
@@ -161,13 +165,13 @@ if(!empty($row1)) {
 </div>
 <!-- review end -->
 <?php
-     $city = $_GET['city'];
-     $hname = $_GET['hname'];
-$stmt = $conn->prepare("SELECT * FROM hotels WHERE city = ? AND hotelname = ?");
-$stmt->bind_param('ss', $city, $hname);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
+//      $city = $_GET['city'];
+//      $hname = $_GET['hname'];
+// $stmt = $conn->prepare("SELECT * FROM hotels WHERE city = ? AND hotelname = ?");
+// $stmt->bind_param('ss', $city, $hname);
+//     $stmt->execute();
+//     $result = $stmt->get_result();
+//     $row = $result->fetch_assoc();
 if(empty($row)){
    echo "<div style='display:none;'>";
 }

@@ -77,12 +77,12 @@ elseif ($data=$conn->prepare("INSERT INTO feedback1 (name,email,pno,msg,time) VA
         $time = date('d/m/Y h:i:s', time());
              $data->bind_param("sssss", $_POST['name'], $_POST['email'], $_POST['pno'], $_POST['msg'],$time);
              $data->execute();
-			 $data->close();			 
+       $data->close();       
        header("Location:http://farmingarms.com/task/index.php?msg=Feedback Submitted Sucessfully!");
-	 }
-		else{
-		  header("Location:http://farmingarms.com/task/index.php?msg=Operation !");
-		}
+   }
+    else{
+      header("Location:http://farmingarms.com/task/index.php?msg=Operation !");
+    }
     }
 }
 if(isset($_POST["add"])){
@@ -93,7 +93,7 @@ if($_POST['hotelname'] =="" or $_POST['address']=="" or $_POST['pno'] =="" or $_
 }
 
 else{
-	$target_dir = "img/hotel_image/";
+  $target_dir = "img/hotel_image/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -113,14 +113,14 @@ elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "
     header("Location:http://farmingarms.com/task/add_res.php?msg=Sorry, only JPG, JPEG, PNG & GIF files are allowed");
 }
 else{
-	$file_name = $_FILES['fileToUpload']['name'];
+  $file_name = $_FILES['fileToUpload']['name'];
 $connection=$conn->prepare("INSERT INTO hotels (hotelname,address,pno,star,average,city,picture,time) VALUES(?,?,?,?,?,?,?,?)");
 $connection->bind_param("ssssssss",$_POST['hotelname'], $_POST['address'], $_POST['pno'], $_POST['star'], $_POST['average_cost'],$_POST['city'],$file_name,$_POST['time']);
 move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
  $connection->execute();
    $connection->close();
    header("Location:http://farmingarms.com/task/add_res.php?msg=Restaurant has been Added Sucessfully");
-   	}
+    }
    }  
 }
 if(isset($_POST["reviewb"])){
@@ -146,4 +146,4 @@ header("Location:http://farmingarms.com/task/review.php?city=".$city."&hname=".$
 
 }
 }
-   	?>
+    ?>

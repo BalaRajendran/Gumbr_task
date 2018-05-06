@@ -11,6 +11,8 @@
         <!-- bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- main sheet -->
         <link href="css/main.css" rel="stylesheet" type="text/css"/>
         <!-- animate library -->
@@ -245,12 +247,22 @@
                     <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".5s">    
                         <center><div class="col-sm-6">
                     <div class="form-group box" >
-                    <input class="form-control"  type="text" name="hname" placeholder="* Search here *" required>
-                    <button  name="button" class="button1 btn btn-success">Search</button>
+                    <input class="form-control"  type="text" name="hname" id="hname" placeholder="* Search here *" required>
+                    <button  name="button" class="button1 btn btn-success">click for full view</button>
                     </div>
                         </div>
                     </div>
                     </form>
+                    <div class="container">
+                          <div class="row">
+                            <div class="col-sm">
+                              <span id="result"></span>
+                            </div>
+                            <div class="col-sm">
+                              <span id="result1"></span>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -378,7 +390,47 @@ $(document).ready(function(){
             $('#city').html('<option value="">Select state first</option>'); 
         }
     });
-});
+// search
+  function load_data(query)
+  {
+   $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{query:query},
+    success:function(data)
+    {
+     $('#result').html(data);
+    }
+   });
+  }
+    function load_data1(query,query1)
+  {
+   $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{query:query,query1:query1},
+    success:function(data)
+    {
+     $('#result1').html(data);
+    }
+   });
+  }
+  $('#city').on('change',function(){
+   var search = $(this).val();
+   if(search != '')
+   {
+    load_data(search);
+   }
+  });
+    $("#hname").keydown(function(){
+   var search1 = $(this).val();
+   var search = $("#city").val();
+   if(search != '' && search1 !='')
+   {
+    load_data1(search,search1);
+   }
+  });
+ });
 </script>
 </body>
 </html>

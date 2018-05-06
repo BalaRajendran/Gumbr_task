@@ -46,15 +46,18 @@ $stmt->bind_param('ss', $city, $hname);
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>    
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>    
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="add_res.php">Add Restaurant</a>    
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#myModal" href="login/register.php">Sign-Up</a>
+        <a class="nav-link" href="login/register.php">Sign-Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#myModal" href="login/index.php">Log-In </a>
+        <a class="nav-link" href="login/index.php">Log-In </a>
       </li>
     </ul>
   </div>
@@ -167,7 +170,10 @@ $stmt->bind_param('ss', $city, $hname);
     $row = $result->fetch_assoc();
 if(empty($row)){
    echo "<div style='display:none;'>";
-
+}
+else{
+  echo "<div class='show'>"; 
+}
 ?>
 <div class="g-bg-color--sky-light">
             <div class="container g-padding-y-80--xs g-padding-y-75--sm">
@@ -175,7 +181,7 @@ if(empty($row)){
                 <div class="g-text-center--xs g-margin-b-80--xs">
                   <!-- start -->
 <center><span id="error1"><?php if(isset($_GET['msg1'])){ echo $_GET['msg1']; } ?></span></center><br>
-<form id="myFrm2" action="feedback.php" method="POST" autocomplete="off">
+<form id="myFrm2" action="add.php" method="POST" autocomplete="off">
 <input type="text" class="form-control"  name="name" id="name" placeholder="* Name please *"><br>
 <input type="hidden" name="city" value="<?php echo $_GET["city"]; ?>">
 <input type="hidden" name="hotelname" value="<?php echo $_GET["hname"]; ?>">
@@ -187,9 +193,7 @@ if(empty($row)){
                     </div>
                 </div>
             </div>
-         <?php echo "</div>"; }  ?>
-
-<?php echo "</div>"; } ?>
+         <?php echo "</div> </div>"; }  ?>
         <footer style="background-color:#337ab7; !mportant" class="g-bg-color--dark">
             <!-- Links -->
             <div class="g-hor-divider__dashed--white-opacity-lightest">
